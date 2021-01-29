@@ -142,7 +142,7 @@ function onRemoteStream(stream) {
         Janus.log(" ::: remotevideo == 0 :::");
         addButtons = true;
         $('#stream').append('<video class="rounded centered hide" id="remotevideo" width="50%" height="50%" playsinline controls autoplay/>');
-       // $('#remotevideo').get(0).volume = 0;
+        $('#remotevideo').get(0).volume = 0.5;
         // Show the stream and hide the spinner when we get a playing event
         $("#remotevideo").bind("playing", function () {
             Janus.log(" ::: playing stream :::");
@@ -188,9 +188,6 @@ function updateStreamsList() {
 			return;
 		}
 		if(result["list"]) {
-			$('#streams').removeClass('hide').show();
-			$('#streamslist').empty();
-			$('#watch').attr('disabled', true).unbind('click');
 			var list = result["list"];
 			Janus.log("Got a list of available streams");
 			if(list && Array.isArray(list)) {
