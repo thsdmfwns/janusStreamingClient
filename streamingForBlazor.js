@@ -159,9 +159,6 @@ function onRemoteStream(stream) {
     }
     Janus.attachMediaStream($('#remotevideo').get(0), stream);
     Janus.log("stream =========== "+ stream)
-    // $("#remotevideo").get(0).pause();
-    // $("#remotevideo").get(0).play();
-    // $("#remotevideo").get(0).volume = 1;
     var videoTracks = stream.getVideoTracks();
     if(!videoTracks || videoTracks.length === 0) {
         // No remote video
@@ -216,7 +213,6 @@ function startStream() {
 	var body = { request: "watch", id: parseInt(selectedStream) || selectedStream};
 	streaming.send({ message: body });
 	// No remote video yet
-	// $('#stream').append('<video class="rounded centered" id="waitingvideo" width="100%" height="100%" />');
 	if(spinner == null) {
 		var target = document.getElementById('stream');
 		spinner = new Spinner({top:100}).spin(target);
